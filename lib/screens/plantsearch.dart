@@ -130,8 +130,6 @@ class _PlantSearchState extends State<PlantSearch> with SingleTickerProviderStat
 }
 
 
-
-
 /*
 class PlantDetail extends StatefulWidget {
   @override
