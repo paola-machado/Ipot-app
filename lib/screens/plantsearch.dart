@@ -3,6 +3,7 @@ import 'package:Ipot/models/plant.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:loading_animations/loading_animations.dart';
 
 class PlantSearch extends StatefulWidget {
@@ -16,7 +17,7 @@ class _PlantSearchState extends State<PlantSearch>
 
   Future getPlants() async {
     CollectionReference firestore =
-        FirebaseFirestore.instance.collection("Plantas");
+        FirebaseFirestore.instance.collection("plants");
     QuerySnapshot qn = await firestore.get();
     return qn.docs;
   }
@@ -45,7 +46,7 @@ class _PlantSearchState extends State<PlantSearch>
                   right: 20.0,
                   top: 60.0,
                 ),
-                height: 650.0,
+                height: 670.0,
                 color: Colors.white,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -61,26 +62,24 @@ class _PlantSearchState extends State<PlantSearch>
                             color: Colors.grey,
                           ),
                         ),
-                        SizedBox(height: 20.0),
-                        TextField(
-                          //add focus node? eventually? maybe??
-                          decoration: InputDecoration(
-                              hintText: "Search",
-                              prefixIcon: Icon(Icons.search),
-                              border: OutlineInputBorder(
-                                  borderSide: BorderSide(color: Colors.green),
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(25.0)))),
-                        ),
-                        SizedBox(height: 200.0),
-                        Container(
-                          child: getFutureBuilder(),
-                        ),
                       ],
                     ),
                     SizedBox(height: 20.0),
+                    TextField(
+                      decoration: InputDecoration(
+                        hintText: "Search",
+                        prefixIcon: Icon(Icons.search),
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.green),
+                          borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                        ),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                        ),
+                      ),
+                    ),
+                    SizedBox(height: 20.0),
                     Container(
-                      //height: 600,
                       child: getFutureBuilder(),
                     ),
                   ],
@@ -111,23 +110,24 @@ class _PlantSearchState extends State<PlantSearch>
           } else {
             return Expanded(
               child: ListView.builder(
-                //shrinkWrap: true,
-                itemCount: snapshot.data.length,
-                itemBuilder: (context, index) {
-                  return ListTile(
-                    title: Text(
-                      new Plant().fromJson(snapshot.data[index]).nomeComum,
-                    ),
-                    //onTap: () => navigateToDetail(snapshot.data[index]),
-                  );
-                },
-              ),
+                  //shrinkWrap: true,
+                  itemCount: snapshot.data.length,
+                  itemBuilder: (context, index) {
+                    return ListTile(
+                      title: Text(Plant()
+                          .fromJson(snapshot.data[index])
+                          .data['nomeComum']),
+                      //onTap: () => navigateToDetail(snapshot.data[index]),
+                    );
+                  }),
             );
           }
         });
   }
 }
+
 /*
+
 class PlantDetail extends StatefulWidget {
   final DocumentSnapshot plant;
   const PlantDetail({Key key, this.plant}) : super(key: key);
@@ -147,4 +147,5 @@ class _PlantDetailState extends State<PlantDetail> {
      ),
    );
   }
-}*/
+}
+*/
