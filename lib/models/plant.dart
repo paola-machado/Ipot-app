@@ -31,9 +31,9 @@ class Plant {
   String quantiaAgua;
   String quantiaSol;
   String temperatura;
- // DocumentReference reference;
+  // DocumentReference reference;
 
- /* Plant(this.nomeComum,
+  /* Plant(this.nomeComum,
       {this.imageUrl, this.nomeCientifico, this.quantiaAgua, this.quantiaSol, this.temperatura, this.reference});*/
 
   Map<String, dynamic> toJson() {
@@ -54,6 +54,7 @@ class Plant {
     quantiaAgua = map['quantiaAgua'];
     quantiaSol = map['quantiaSol'];
     temperatura = map['temperatura'];
+    return this;
   }
 }
 /*
@@ -70,7 +71,7 @@ class Plant {
   @override
   String toString() => "Plants<$nomeComum>";
 }*/
- /* Widget build(BuildContext context) {
+/* Widget build(BuildContext context) {
     CollectionReference plants = FirebaseFirestore.instance.collection('plants');
 
     Future<void> addPlant() {
