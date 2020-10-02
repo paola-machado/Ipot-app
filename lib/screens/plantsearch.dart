@@ -1,6 +1,5 @@
-import 'package:Ipot/models/plantmodel.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -10,13 +9,14 @@ class PlantSearch extends StatefulWidget {
   _PlantSearchState createState() => _PlantSearchState();
 }
 
-class _PlantSearchState extends State<PlantSearch> with SingleTickerProviderStateMixin {
+class _PlantSearchState extends State<PlantSearch>
+    with SingleTickerProviderStateMixin {
   PageController _pageController;
 
   Future getPlants() async {
-
-    var firestore = FirebaseFirestore.instance;
-    QuerySnapshot qn = await firestore.collection("plants").get();
+    CollectionReference firestore =
+        FirebaseFirestore.instance.collection("Plantas");
+    QuerySnapshot qn = await firestore.get();
     return qn.docs;
   }
 
@@ -87,34 +87,19 @@ class _PlantSearchState extends State<PlantSearch> with SingleTickerProviderStat
                           ],
                         ),
                         SizedBox(height: 20.0),
-                        TextField(     //add focus node? eventually? maybe??
+                        TextField(
+                          //add focus node? eventually? maybe??
                           decoration: InputDecoration(
                               hintText: "Search",
                               prefixIcon: Icon(Icons.search),
                               border: OutlineInputBorder(
                                   borderSide: BorderSide(color: Colors.green),
-                                  borderRadius: BorderRadius.all(Radius.circular(25.0))
-                              )),
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(25.0)))),
                         ),
-                        SizedBox(height: 20.0),
+                        SizedBox(height: 200.0),
                         Container(
-                          child: FutureBuilder(
-                              future: getPlants(),
-                              // ignore: missing_return
-                              builder: (_, snapshot){
-                                if(snapshot.connectionState == ConnectionState.waiting){
-                                  return Center(
-                                    child: Text("Loading"),
-                                  );
-                                }else{
-                                  return ListView.builder(
-                                      itemBuilder: (_, index){
-                                        return ListTile(
-                                          title: Text(snapshot.data[index].data["nomeComum"]),
-                                        );
-                                      });
-                                }
-                              }),
+                          child: getFutureBuilder(),
                         ),
                       ],
                     ),
@@ -127,10 +112,27 @@ class _PlantSearchState extends State<PlantSearch> with SingleTickerProviderStat
       ),
     );
   }
+
+  Widget getFutureBuilder() {
+    return FutureBuilder(
+      future: getPlants(),
+      builder: (_, snapshot) {
+        if (snapshot.hasError) {
+          print(snapshot.error);
+          return Text("Something went wrong");
+        }
+
+        if (snapshot.connectionState == ConnectionState.done) {
+          Map<String, dynamic> data = snapshot.data.data();
+          return Text(data.toString());
+        }
+
+        return Text("loading");
+      },
+    );
+  }
 }
 
-
-/*
 class PlantDetail extends StatefulWidget {
   @override
   _PlantDetailState createState() => _PlantDetailState();
@@ -141,5 +143,4 @@ class _PlantDetailState extends State<PlantDetail> {
   Widget build(BuildContext context) {
     return Container();
   }
-}*/
-
+}
