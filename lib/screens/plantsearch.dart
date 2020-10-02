@@ -1,5 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+<<<<<<< HEAD
 import 'package:Ipot/models/plant.dart';
+=======
+import 'package:firebase_core/firebase_core.dart';
+>>>>>>> 1e0ff42d655819bf02e1f2f869a7904d396a4d59
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -10,10 +14,20 @@ class PlantSearch extends StatefulWidget {
   _PlantSearchState createState() => _PlantSearchState();
 }
 
+<<<<<<< HEAD
 class _PlantSearchState extends State<PlantSearch> with SingleTickerProviderStateMixin {
 
  Future getPlants() async {
     CollectionReference firestore = FirebaseFirestore.instance.collection('plants');
+=======
+class _PlantSearchState extends State<PlantSearch>
+    with SingleTickerProviderStateMixin {
+  PageController _pageController;
+
+  Future getPlants() async {
+    CollectionReference firestore =
+        FirebaseFirestore.instance.collection("Plantas");
+>>>>>>> 1e0ff42d655819bf02e1f2f869a7904d396a4d59
     QuerySnapshot qn = await firestore.get();
     return qn.docs;
   }
@@ -58,6 +72,7 @@ class _PlantSearchState extends State<PlantSearch> with SingleTickerProviderStat
                             color: Colors.grey,
                           ),
                         ),
+<<<<<<< HEAD
                       ],
                     ),
                     SizedBox(height: 20.0),
@@ -72,6 +87,22 @@ class _PlantSearchState extends State<PlantSearch> with SingleTickerProviderStat
                         border: OutlineInputBorder(
                           borderRadius:
                           BorderRadius.all(Radius.circular(25.0)),
+=======
+                        SizedBox(height: 20.0),
+                        TextField(
+                          //add focus node? eventually? maybe??
+                          decoration: InputDecoration(
+                              hintText: "Search",
+                              prefixIcon: Icon(Icons.search),
+                              border: OutlineInputBorder(
+                                  borderSide: BorderSide(color: Colors.green),
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(25.0)))),
+                        ),
+                        SizedBox(height: 200.0),
+                        Container(
+                          child: getFutureBuilder(),
+>>>>>>> 1e0ff42d655819bf02e1f2f869a7904d396a4d59
                         ),
                       ),
                     ),
@@ -89,6 +120,7 @@ class _PlantSearchState extends State<PlantSearch> with SingleTickerProviderStat
       ),
     );
   }
+<<<<<<< HEAD
 
   Widget getFutureBuilder() {
     return FutureBuilder(
@@ -124,6 +156,29 @@ class _PlantSearchState extends State<PlantSearch> with SingleTickerProviderStat
   }
 }
 /*
+=======
+
+  Widget getFutureBuilder() {
+    return FutureBuilder(
+      future: getPlants(),
+      builder: (_, snapshot) {
+        if (snapshot.hasError) {
+          print(snapshot.error);
+          return Text("Something went wrong");
+        }
+
+        if (snapshot.connectionState == ConnectionState.done) {
+          Map<String, dynamic> data = snapshot.data.data();
+          return Text(data.toString());
+        }
+
+        return Text("loading");
+      },
+    );
+  }
+}
+
+>>>>>>> 1e0ff42d655819bf02e1f2f869a7904d396a4d59
 class PlantDetail extends StatefulWidget {
   final DocumentSnapshot plant;
   const PlantDetail({Key key, this.plant}) : super(key: key);
@@ -144,4 +199,7 @@ class _PlantDetailState extends State<PlantDetail> {
    );
   }
 }
+<<<<<<< HEAD
 */
+=======
+>>>>>>> 1e0ff42d655819bf02e1f2f869a7904d396a4d59
