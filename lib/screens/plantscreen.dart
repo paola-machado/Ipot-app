@@ -119,10 +119,10 @@ class _PlantScreenState extends State<PlantScreen> {
                     bottom: 30.0,
                     child: Hero(
                       tag: widget.plant.imageUrl,
-                      child: Image(
+                      child: new Image.network(
+                        'https://i.picsum.photos/id/100/200/200.jpg?hmac=-Ffd_UnIv9DLflvK15Fq_1gRuN8t2wWU4UiuwAu4Rqs',
                         height: 280.0,
                         width: 280.0,
-                        image: AssetImage(widget.plant.imageUrl),
                         fit: BoxFit.cover,
                       ),
                     ),
