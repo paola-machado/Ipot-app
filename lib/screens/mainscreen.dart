@@ -108,47 +108,76 @@ class _MainScreenState extends State<MainScreen>
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
+      appBar: AppBar(
+        backgroundColor: Color(0xFF32A060),
+        actions: [
+          IconButton(
+            icon: Icon(Icons.add,),
+            color: Colors.white,
+            iconSize: 30.0,
+            tooltip: 'Add new plant',
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => PlantSearch()),
+              );
+            },
+          ),
+        ],
+      ),
+      drawer: Drawer(
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: <Widget>[
+            DrawerHeader(
+              child: Text(
+                '',
+                style: TextStyle(color: Colors.white, fontSize: 25),
+              ),
+              decoration: BoxDecoration(
+                  color: Color(0xFF32A060),
+                  image: DecorationImage(
+                      fit: BoxFit.fill,
+                      image: AssetImage('assets/images/menu.jpg'))),
+            ),
+            ListTile(
+              leading: Icon(Icons.verified_user),
+              title: Text('Profile'),
+              onTap: () => {Navigator.of(context).pop()},
+            ),
+            ListTile(
+              leading: Icon(Icons.settings),
+              title: Text('Settings'),
+              onTap: () => {Navigator.of(context).pop()},
+            ),
+            ListTile(
+              leading: Icon(Icons.border_color),
+              title: Text('Feedback'),
+              onTap: () => {Navigator.of(context).pop()},
+            ),
+            ListTile(
+              leading: Icon(Icons.exit_to_app),
+              title: Text('Logout'),
+              onTap: () => {Navigator.of(context).pop()},
+            ),
+          ],
+        ),
+      ),
       body: AnnotatedRegion<SystemUiOverlayStyle>(
         value: SystemUiOverlayStyle.dark,
         child: ListView(
-          padding: EdgeInsets.symmetric(vertical: 60.0),
+          padding: EdgeInsets.symmetric(vertical: 40.0),
           children: <Widget>[
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 30.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: <Widget>[
-                  IconButton(
-                    icon: Icon(Icons.menu,),
-                    color: Colors.grey,
-                    iconSize: 30.0,
-                    tooltip: 'Menu',
-                    onPressed: () {
-                    },
-                  ),
-                  IconButton(
-                    icon: Icon(Icons.add,),
-                    color: Colors.grey,
-                    iconSize: 30.0,
-                    tooltip: 'Add new plant',
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => PlantSearch()),
-                      );
-                    },
-                  ),
-                ],
-              ),
             ),
-            SizedBox(height: 20.0),
             Padding(
               padding: EdgeInsets.only(left: 30.0),
               child: Text(
                 'Welcome',
                 style: TextStyle(
                   color: Colors.green,
-                  fontSize: 24.0,
+                  fontSize: 30.0,
                   fontWeight: FontWeight.w600,
                 ),
               ),

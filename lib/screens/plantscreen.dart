@@ -29,7 +29,7 @@ class _PlantScreenState extends State<PlantScreen> {
                       right: 30.0,
                       top: 60.0,
                     ),
-                    height: 520.0,
+                    height: 420.0,
                     color: Color(0xFF32A060),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -64,7 +64,24 @@ class _PlantScreenState extends State<PlantScreen> {
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                        SizedBox(height: 40.0),
+                        SizedBox(height: 20.0),
+                        Text(
+                          'Nome Científico',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 15.0,
+                          ),
+                        ),
+                        SizedBox(height: 3.0),
+                        Text(
+                          'Teste',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 25.0,
+                          ),
+                        ),
+                        SizedBox(height: 20.0),
                         Text(
                           'Umidade',
                           style: TextStyle(
@@ -72,7 +89,7 @@ class _PlantScreenState extends State<PlantScreen> {
                             fontSize: 15.0,
                           ),
                         ),
-                        SizedBox(height: 5.0),
+                        SizedBox(height: 3.0),
                         Text(
                           widget.plant.price,
                           style: TextStyle(
@@ -81,7 +98,7 @@ class _PlantScreenState extends State<PlantScreen> {
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                        SizedBox(height: 40.0),
+                        SizedBox(height: 20.0),
                         Text(
                           'Luminosidade',
                           style: TextStyle(
@@ -89,7 +106,7 @@ class _PlantScreenState extends State<PlantScreen> {
                             fontSize: 15.0,
                           ),
                         ),
-                        SizedBox(height: 5.0),
+                        SizedBox(height: 3.0),
                         Text(
                           widget.plant.size,
                           style: TextStyle(
@@ -98,19 +115,7 @@ class _PlantScreenState extends State<PlantScreen> {
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                        SizedBox(height: 40.0),
-                        RawMaterialButton(
-                          padding: EdgeInsets.all(20.0),
-                          shape: CircleBorder(),
-                          elevation: 2.0,
-                          fillColor: Colors.black,
-                          child: Icon(
-                            Icons.add,
-                            color: Colors.white,
-                            size: 35.0,
-                          ),
-                          onPressed: () => print('Add to cart'),
-                        ),
+                        SizedBox(height: 20.0),
                       ],
                     ),
                   ),
@@ -120,7 +125,7 @@ class _PlantScreenState extends State<PlantScreen> {
                     child: Hero(
                       tag: widget.plant.imageUrl,
                       child: new Image.network(
-                        'https://i.picsum.photos/id/100/200/200.jpg?hmac=-Ffd_UnIv9DLflvK15Fq_1gRuN8t2wWU4UiuwAu4Rqs',
+                        '',
                         height: 280.0,
                         width: 280.0,
                         fit: BoxFit.cover,

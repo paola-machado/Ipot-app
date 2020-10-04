@@ -1,6 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:Ipot/models/plant.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -11,13 +10,12 @@ class PlantSearch extends StatefulWidget {
   _PlantSearchState createState() => _PlantSearchState();
 }
 
-class _PlantSearchState extends State<PlantSearch>
-    with SingleTickerProviderStateMixin {
+class _PlantSearchState extends State<PlantSearch> with SingleTickerProviderStateMixin {
   PageController _pageController;
 
   Future getPlants() async {
     CollectionReference firestore =
-        FirebaseFirestore.instance.collection("plants");
+    FirebaseFirestore.instance.collection("plants");
     QuerySnapshot qn = await firestore.get();
     return qn.docs;
   }
@@ -118,8 +116,7 @@ class _PlantSearchState extends State<PlantSearch>
               itemCount: snapshot.data.length,
               itemBuilder: (context, index) {
                 Plant planta =
-                    new Plant().fromJson(snapshot.data[index].data());
-
+                new Plant().fromJson(snapshot.data[index].data());
                 return ListTile(
                   title: Text(planta.nomeComum),
                   onTap: () => navigateToDetail(planta),
@@ -144,148 +141,177 @@ class PlantDetail extends StatefulWidget {
 class _PlantDetailState extends State<PlantDetail> {
   @override
   Widget build(BuildContext context) {
-    print(widget.plant.imageUrl);
     return Scaffold(
       body: AnnotatedRegion<SystemUiOverlayStyle>(
         value: SystemUiOverlayStyle.light,
         child: SingleChildScrollView(
-          child: Column(
-            children: [
-              Stack(
-                children: [
-                  Container(
-                    padding: EdgeInsets.only(
-                      left: 30.0,
-                      right: 30.0,
-                      top: 60.0,
-                    ),
-                    height: 520.0,
-                    color: Color(0xFF32A060),
-                    child: Column(
-                      children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: <Widget>[
-                            GestureDetector(
-                              onTap: () => Navigator.pop(context),
-                              child: Icon(
-                                Icons.arrow_back,
-                                size: 40.0,
-                                color: Colors.white,
-                              ),
-                            ),
-                          ],
-                        ),
-                        SizedBox(height: 20.0),
-                        Text(
-                          'Nome Popular',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 12.0,
-                          ),
-                        ),
-                        SizedBox(height: 5.0),
-                        Text(
-                          widget.plant.nomeComum,
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 14.0,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        Text(
-                          'Nome Científico',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 12.0,
-                          ),
-                        ),
-                        SizedBox(height: 5.0),
-                        Text(
-                          widget.plant.nomeCientifico,
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 14.0,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        Text(
-                          'Umidade',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 12.0,
-                          ),
-                        ),
-                        SizedBox(height: 5.0),
-                        Text(
-                          widget.plant.quantiaAgua,
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 14.0,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        Text(
-                          'Luminosidade',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 12.0,
-                          ),
-                        ),
-                        SizedBox(height: 5.0),
-                        Text(
-                          widget.plant.quantiaSol,
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 14.0,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        Positioned(
-                          right: 20.0,
-                          bottom: 30.0,
-                          child: Hero(
-                            tag: widget.plant.imageUrl,
-                            child: Image.network(widget.plant.imageUrl),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-              Container(
-                child: Padding(
-                  padding: EdgeInsets.only(
-                    left: 30.0,
-                    right: 30.0,
-                    top: 40.0,
-                  ),
-                  child: Column(
-                    children: [
-                      Text(
-                        'Temperatura',
-                        style: TextStyle(
-                          fontSize: 24.0,
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
-                      SizedBox(height: 10.0),
-                      Text(
-                        widget.plant.temperatura,
-                        style: TextStyle(
-                          color: Colors.black87,
-                          fontSize: 16.0,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              )
-            ],
-          ),
+         child: Container(
+           child: getPlantDetail(),
+         ),
         ),
       ),
     );
   }
+
+  Widget getPlantDetail(){
+    return Container(
+      child: Column(
+        children: [
+          Stack(
+            children: [
+              Container(
+                padding: EdgeInsets.only(
+                  left: 20.0,
+                  right: 20.0,
+                  top: 60.0,
+                ),
+                height: 460.0,
+                color: Color(0xFF32A060),
+                child: Column(
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: <Widget>[
+                        GestureDetector(
+                          onTap: () => Navigator.pop(context),
+                          child: Icon(
+                            Icons.arrow_back,
+                            size: 30.0,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ],
+                    ),
+                    SizedBox(height: 10.0),
+                    Text(
+                      'Nome Popular',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 15.0,
+                      ),
+                    ),
+                    SizedBox(height: 3.0),
+                    Text(
+                      widget.plant.nomeComum,
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 30.0,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    SizedBox(height: 20.0),
+                    Text(
+                      'Nome Científico',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 15.0,
+                      ),
+                    ),
+                    SizedBox(height: 3.0),
+                    Text(
+                      widget.plant.nomeCientifico,
+                      style: TextStyle(
+                        fontStyle: FontStyle.italic,
+                        color: Colors.white,
+                        fontSize: 20.0,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    SizedBox(height: 20.0),
+                    Text(
+                      'Umidade',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 15.0,
+                      ),
+                    ),
+                    SizedBox(height: 3.0),
+                    Text(
+                      widget.plant.quantiaAgua,
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 20.0,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    SizedBox(height: 20.0),
+                    Text(
+                      'Luminosidade',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 15.0,
+                      ),
+                    ),
+                    SizedBox(height: 3.0),
+                    Text(
+                      widget.plant.quantiaSol,
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 20.0,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    SizedBox(height: 20.0),
+                    RawMaterialButton(
+                      padding: EdgeInsets.all(20.0),
+                      shape: CircleBorder(),
+                      elevation: 2.0,
+                      fillColor: Colors.greenAccent,
+                      child: Icon(
+                        Icons.add,
+                        color: Colors.black,
+                        size: 35.0,
+                      ),
+                      onPressed: () => print('Add to user'),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+          Container(
+            child: Padding(
+              padding: EdgeInsets.only(
+                left: 20.0,
+                right: 20.0,
+                top: 20.0,
+              ),
+              child: Column(
+                children: [
+                  Text(
+                    'Temperatura',
+                    style: TextStyle(
+                      fontSize: 24.0,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                  SizedBox(height: 10.0),
+                  Text(
+                    widget.plant.temperatura,
+                    style: TextStyle(
+                      color: Colors.black87,
+                      fontSize: 16.0,
+                    ),
+                  ),
+                  SizedBox(height: 10.0),
+                  Container(
+                    child: Text('Picture here',
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 50.0,
+                      ),),
+                     /* child: Hero(
+                        tag: widget.plant.imageUrl,
+                        child: Image.network(widget.plant.imageUrl),
+                      ),*/
+                    ),
+                ],
+              ),
+            ),
+          )
+        ],
+      ),
+    );
+  }
+
 }
