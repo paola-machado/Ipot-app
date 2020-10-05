@@ -5,6 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a8035d52-22ff-4617-bec1-e2dc1db609da" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/android/.gradle/6.6.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/6.6.1/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/android/.gradle/6.6.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/6.6.1/executionHistory/executionHistory.lock" afterDir="false" />
@@ -15,10 +17,15 @@
       <change beforePath="$PROJECT_DIR$/android/.gradle/6.6.1/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/6.6.1/javaCompile/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/android/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/android/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/android/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/local.properties" beforeDir="false" afterPath="$PROJECT_DIR$/android/local.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/plant0.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/plant1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/plant2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/models/plant.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/models/plant.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/models/plantmodel.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/models/plantmodel.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/screens/mainscreen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/mainscreen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/screens/plantscreen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/plantscreen.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/screens/plantsearch.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/plantsearch.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/searchpage.dart" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

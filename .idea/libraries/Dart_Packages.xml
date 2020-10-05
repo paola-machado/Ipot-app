@@ -163,13 +163,6 @@
             </list>
           </value>
         </entry>
-        <entry key="flappy_search_bar">
-          <value>
-            <list>
-              <option value="C:/flutter/.pub-cache/hosted/pub.dartlang.org/flappy_search_bar-1.4.1/lib" />
-            </list>
-          </value>
-        </entry>
         <entry key="flutter">
           <value>
             <list>
@@ -180,14 +173,7 @@
         <entry key="flutter_launcher_icons">
           <value>
             <list>
-              <option value="C:/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_launcher_icons-0.8.0/lib" />
-            </list>
-          </value>
-        </entry>
-        <entry key="flutter_staggered_grid_view">
-          <value>
-            <list>
-              <option value="C:/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_staggered_grid_view-0.3.2/lib" />
+              <option value="C:/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_launcher_icons-0.8.1/lib" />
             </list>
           </value>
         </entry>
@@ -271,14 +257,14 @@
         <entry key="pedantic">
           <value>
             <list>
-              <option value="C:/flutter/.pub-cache/hosted/pub.dartlang.org/pedantic-1.9.0/lib" />
+              <option value="C:/flutter/.pub-cache/hosted/pub.dartlang.org/pedantic-1.9.2/lib" />
             </list>
           </value>
         </entry>
         <entry key="petitparser">
           <value>
             <list>
-              <option value="C:/flutter/.pub-cache/hosted/pub.dartlang.org/petitparser-3.0.4/lib" />
+              <option value="C:/flutter/.pub-cache/hosted/pub.dartlang.org/petitparser-3.1.0/lib" />
             </list>
           </value>
         </entry>
@@ -399,9 +385,7 @@
       <root url="file://C:/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_core_platform_interface-2.0.0/lib" />
       <root url="file://C:/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_core_web-0.2.0/lib" />
       <root url="file://C:/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_database-4.1.0/lib" />
-      <root url="file://C:/flutter/.pub-cache/hosted/pub.dartlang.org/flappy_search_bar-1.4.1/lib" />
-      <root url="file://C:/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_launcher_icons-0.8.0/lib" />
-      <root url="file://C:/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_staggered_grid_view-0.3.2/lib" />
+      <root url="file://C:/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_launcher_icons-0.8.1/lib" />
       <root url="file://C:/flutter/.pub-cache/hosted/pub.dartlang.org/http-0.12.2/lib" />
       <root url="file://C:/flutter/.pub-cache/hosted/pub.dartlang.org/http_parser-3.1.4/lib" />
       <root url="file://C:/flutter/.pub-cache/hosted/pub.dartlang.org/image-2.1.18/lib" />
@@ -411,8 +395,8 @@
       <root url="file://C:/flutter/.pub-cache/hosted/pub.dartlang.org/matcher-0.12.10-nullsafety.1/lib" />
       <root url="file://C:/flutter/.pub-cache/hosted/pub.dartlang.org/meta-1.3.0-nullsafety.3/lib" />
       <root url="file://C:/flutter/.pub-cache/hosted/pub.dartlang.org/path-1.8.0-nullsafety.1/lib" />
-      <root url="file://C:/flutter/.pub-cache/hosted/pub.dartlang.org/pedantic-1.9.0/lib" />
-      <root url="file://C:/flutter/.pub-cache/hosted/pub.dartlang.org/petitparser-3.0.4/lib" />
+      <root url="file://C:/flutter/.pub-cache/hosted/pub.dartlang.org/pedantic-1.9.2/lib" />
+      <root url="file://C:/flutter/.pub-cache/hosted/pub.dartlang.org/petitparser-3.1.0/lib" />
       <root url="file://C:/flutter/.pub-cache/hosted/pub.dartlang.org/plugin_platform_interface-1.0.3/lib" />
       <root url="file://C:/flutter/.pub-cache/hosted/pub.dartlang.org/quiver-2.1.3/lib" />
       <root url="file://C:/flutter/.pub-cache/hosted/pub.dartlang.org/source_span-1.8.0-nullsafety.2/lib" />

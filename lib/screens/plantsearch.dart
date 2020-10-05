@@ -115,8 +115,7 @@ class _PlantSearchState extends State<PlantSearch> with SingleTickerProviderStat
               shrinkWrap: true,
               itemCount: snapshot.data.length,
               itemBuilder: (context, index) {
-                Plant planta =
-                new Plant().fromJson(snapshot.data[index].data());
+                Plant planta = new Plant().fromJson(snapshot.data[index].data());
                 return ListTile(
                   title: Text(planta.nomeComum),
                   onTap: () => navigateToDetail(planta),
@@ -184,7 +183,7 @@ class _PlantDetailState extends State<PlantDetail> {
                     ),
                     SizedBox(height: 10.0),
                     Text(
-                      'Nome Popular',
+                      'Nome',
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 15.0,
@@ -294,17 +293,6 @@ class _PlantDetailState extends State<PlantDetail> {
                     ),
                   ),
                   SizedBox(height: 10.0),
-                  Container(
-                    child: Text('Picture here',
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 50.0,
-                      ),),
-                     /* child: Hero(
-                        tag: widget.plant.imageUrl,
-                        child: Image.network(widget.plant.imageUrl),
-                      ),*/
-                    ),
                 ],
               ),
             ),
@@ -313,5 +301,4 @@ class _PlantDetailState extends State<PlantDetail> {
       ),
     );
   }
-
 }

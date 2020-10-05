@@ -1,6 +1,5 @@
 class Plant {
   String nomeComum;
-  String imageUrl;
   String nomeCientifico;
   String quantiaAgua;
   String quantiaSol;
@@ -8,8 +7,7 @@ class Plant {
 
   Map<String, dynamic> toJson() {
     return {
-      'imageUrl': imageUrl,
-      'nome': nomeComum,
+      'nomeComum': nomeComum,
       'nomeCientifico': nomeCientifico,
       'quantiaAgua': quantiaAgua,
       'quantiaSol': quantiaSol,
@@ -18,7 +16,6 @@ class Plant {
   }
 
   fromJson(Map<String, dynamic> map) {
-    imageUrl = map['imageUrl'];
     nomeComum = map['nomeComum'];
     nomeCientifico = map['nomeCientifico'];
     quantiaAgua = map['quantiaAgua'];
