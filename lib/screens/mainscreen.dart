@@ -1,3 +1,4 @@
+import 'package:Ipot/screens/arduinoscreen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:Ipot/models/plantmodel.dart';
@@ -58,17 +59,14 @@ class _MainScreenState extends State<MainScreen>
               child: Stack(
                 children: <Widget>[
                   Center(
-                    child: Hero(
-                      tag: plants[index].imageUrl,
                       child: Image(
-                        height: 280.0,
-                        width: 280.0,
+                        height: 250.0,
+                        width: 250.0,
                         image: AssetImage(
-                          'assets/images/plant$index.png',
+                          'assets/images/potted-plant.png',
                         ),
-                        fit: BoxFit.cover,
+                        fit: BoxFit.fitHeight,
                       ),
-                    ),
                   ),
                   Positioned(
                     left: 30.0,
@@ -77,7 +75,7 @@ class _MainScreenState extends State<MainScreen>
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
                         Text(
-                          plants[index].category.toUpperCase(),
+                          'NOME',
                           style: TextStyle(
                             color: Colors.white,
                             fontSize: 15.0,
@@ -131,8 +129,8 @@ class _MainScreenState extends State<MainScreen>
           children: <Widget>[
             DrawerHeader(
               child: Text(
-                '',
-                style: TextStyle(color: Colors.white, fontSize: 25),
+                'Menu',
+                style: TextStyle(color: Colors.white, fontSize: 20),
               ),
               decoration: BoxDecoration(
                   color: Color(0xFF32A060),
@@ -141,24 +139,19 @@ class _MainScreenState extends State<MainScreen>
                       image: AssetImage('assets/images/menu.jpg'))),
             ),
             ListTile(
-              leading: Icon(Icons.verified_user),
-              title: Text('Profile'),
+              leading: Icon(Icons.add_circle_outline),
+              title: Text('Nova planta'),
               onTap: () => {Navigator.of(context).pop()},
             ),
             ListTile(
-              leading: Icon(Icons.settings),
-              title: Text('Settings'),
-              onTap: () => {Navigator.of(context).pop()},
-            ),
-            ListTile(
-              leading: Icon(Icons.border_color),
-              title: Text('Feedback'),
-              onTap: () => {Navigator.of(context).pop()},
-            ),
-            ListTile(
-              leading: Icon(Icons.exit_to_app),
-              title: Text('Logout'),
-              onTap: () => {Navigator.of(context).pop()},
+              leading: Icon(Icons.wifi_rounded),
+              title: Text('Controle Vaso'),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => ArduinoScreen()),
+                );
+              },
             ),
           ],
         ),

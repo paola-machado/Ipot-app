@@ -18,7 +18,6 @@ class Plant {
 
 final List<Plant> plants = [
   Plant(
-    imageUrl: 'assets/images/plant0.png',
     name: 'Aloe Vera',
     category: 'Outdoor',
     price: 'fdsfdsfsd',
@@ -27,7 +26,6 @@ final List<Plant> plants = [
         'Aloe vera is a succulent plant species of the genus Aloe. It\'s medicinal uses and air purifying ability make it an awesome plant.',
   ),
   Plant(
-    imageUrl: 'assets/images/plant1.png',
     name: 'Cool Plant',
     category: 'Indoor',
     price: 'fdfsdfsdfds',
@@ -36,7 +34,6 @@ final List<Plant> plants = [
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur porta risus id urna luctus efficitur.',
   ),
   Plant(
-    imageUrl: 'assets/images/plant2.png',
     name: 'Really Cool Plant',
     category: 'New Arrival',
     price: 'sdfdsfsdfsd',
