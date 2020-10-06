@@ -13,7 +13,6 @@ class PlantSearch extends StatefulWidget {
 class _PlantSearchState extends State<PlantSearch>
     with SingleTickerProviderStateMixin {
   PageController _pageController;
-  Plant planta;
   navigateToDetail(Plant plant) {
     Navigator.push(
       context,
@@ -116,7 +115,7 @@ class _PlantSearchState extends State<PlantSearch>
               shrinkWrap: true,
               itemCount: snapshot.data.length,
               itemBuilder: (context, index) {
-                planta = getPlantFromMap(snapshot, index);
+                Plant planta = getPlantFromMap(snapshot, index);
                 return ListTile(
                   title: Text(snapshot.data[index].data()['nomeComum']),
                   onTap: () => navigateToDetail(planta),

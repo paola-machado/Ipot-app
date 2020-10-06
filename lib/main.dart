@@ -1,11 +1,7 @@
-import 'package:Ipot/screens/arduinoscreen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:Ipot/screens/mainscreen.dart';
-import 'package:flutter/foundation.dart';
-import 'dart:io';
-import 'screens/arduinoscreen.dart';
 
 void main() async {
   // ignore: close_sinks

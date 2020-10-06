@@ -1,3 +1,5 @@
+import 'package:Ipot/models/plant.dart';
+import 'package:Ipot/services/database_connection.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
@@ -11,6 +13,8 @@ class CreateScreen extends StatefulWidget {
 
 class _CreateScreenState extends State<CreateScreen> {
   final GlobalKey<FormBuilderState> _fbKey = GlobalKey<FormBuilderState>();
+
+  Plant plant = new Plant();
 
   @override
   Widget build(BuildContext context) {
@@ -102,13 +106,13 @@ class _CreateScreenState extends State<CreateScreen> {
                           .toList(),
                     ),
                     SizedBox(height: 25),
-                    FormBuilderTextField(
-                      attribute: 'temperatura',
+                    TextField(
                       maxLines: 7,
                       maxLengthEnforced: true,
                       decoration: InputDecoration(
                           border: OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(20.0)),
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(20.0)),
                           ),
                           labelText: "Temperatura"),
                     ),
@@ -123,6 +127,11 @@ class _CreateScreenState extends State<CreateScreen> {
                       child: Text('Finalizar'),
                       onPressed: () {
                         if (_fbKey.currentState.saveAndValidate()) {
+                          DatabaseConnection().addNewPlant(
+                              plant.fromJson(_fbKey.currentState.value, null));
+                          while (Navigator.canPop(context)) {
+                            Navigator.pop(context);
+                          }
                           print(_fbKey.currentState.value);
                         }
                       }),

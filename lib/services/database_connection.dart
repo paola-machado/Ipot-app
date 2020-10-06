@@ -7,11 +7,8 @@ class DatabaseConnection {
 
   Future getAllPlants(String search) async {
     QuerySnapshot qn;
-    if (search.isEmpty) {
-      qn = await firestore.get();
-    } else {
-      qn = await firestore.where('nomeComum', isEqualTo: search).get();
-    }
+    qn = await firestore.get();
+
     return qn.docs;
   }
 
@@ -20,7 +17,15 @@ class DatabaseConnection {
     return qn.docs;
   }
 
+  Stream<QuerySnapshot> getByFilter() {
+    return firestore.snapshots();
+  }
+
   void updatePlant(Plant plant) {
     firestore.doc(plant.uid).set(plant.toJson(), SetOptions(merge: true));
+  }
+
+  void addNewPlant(Plant plant) {
+    firestore.add(plant.toJson());
   }
 }

@@ -82,7 +82,7 @@ class _PlantDetailState extends State<PlantDetail> {
                     ),
                     SizedBox(height: 3.0),
                     Text(
-                      widget.plant.nomeCientifico,
+                      widget.plant.nomeCientifico ?? "",
                       style: TextStyle(
                         fontStyle: FontStyle.italic,
                         color: Colors.white,
@@ -177,7 +177,11 @@ class _PlantDetailState extends State<PlantDetail> {
   }
 
   updatePlanta() {
-    widget.plant.ativo = !widget.plant.ativo;
+    if (widget.plant.ativo != null) {
+      widget.plant.ativo = !widget.plant.ativo;
+    } else {
+      widget.plant.ativo = true;
+    }
     DatabaseConnection().updatePlant(widget.plant);
   }
 }
