@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "10366152686",
+    "firebase_url": "https://ipot-app.firebaseio.com",
+    "project_id": "ipot-app",
+    "storage_bucket": "ipot-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:10366152686:android:e8cfc1d00c848233b2e8ff",
+        "android_client_info": {
+          "package_name": "com.example.plantapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "10366152686-tean1ll4cbga9os22d080010smcv25qa.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCom6DuFkNtpWgdK7Gifk4Xpes5x0ayInU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "10366152686-tean1ll4cbga9os22d080010smcv25qa.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
