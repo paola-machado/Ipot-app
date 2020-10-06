@@ -2,6 +2,8 @@
 
 # Files and directories created by pub
 
+.vscode
+.idea
 .dart_tool/
 .packages
 build/
