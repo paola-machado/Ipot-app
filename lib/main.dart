@@ -3,8 +3,13 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:Ipot/screens/mainscreen.dart';
+import 'package:flutter/foundation.dart';
+import 'dart:io';
+import 'screens/arduinoscreen.dart';
 
 void main() async {
+  // ignore: close_sinks
+  //Socket sock = await Socket.connect('192.168.0.111', 80);
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   SystemChrome.setPreferredOrientations(
@@ -13,12 +18,20 @@ void main() async {
   });
 }
 
+// ignore: must_be_immutable
 class MyApp extends StatelessWidget {
+  /*Socket socket;
+
+  MyApp(Socket s){
+    this.socket = s;
+  }*/
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Ipot',
       home: MainScreen(),
+      //ArduinoScreen(channel: socket),
       debugShowCheckedModeBanner: false,
     );
   }

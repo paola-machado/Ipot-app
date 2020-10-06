@@ -5,6 +5,8 @@ import 'package:Ipot/services/database_connection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:Ipot/screens/plantsearch.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'createscreen.dart';
 
 class MainScreen extends StatefulWidget {
   @override
@@ -117,7 +119,7 @@ class _MainScreenState extends State<MainScreen>
             ),
             color: Colors.white,
             iconSize: 30.0,
-            tooltip: 'Add new plant',
+            tooltip: 'Adicionar Planta',
             onPressed: () {
               Navigator.push(
                 context,
@@ -145,7 +147,12 @@ class _MainScreenState extends State<MainScreen>
             ListTile(
               leading: Icon(Icons.add_circle_outline),
               title: Text('Nova planta'),
-              onTap: () => {Navigator.of(context).pop()},
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => CreateScreen()),
+                );
+              },
             ),
             ListTile(
               leading: Icon(Icons.wifi_rounded),
@@ -171,11 +178,11 @@ class _MainScreenState extends State<MainScreen>
             Padding(
               padding: EdgeInsets.only(left: 30.0),
               child: Text(
-                'Welcome',
-                style: TextStyle(
+                'Olá, planter',
+                style: GoogleFonts.lato(
                   color: Colors.green,
-                  fontSize: 30.0,
-                  fontWeight: FontWeight.w600,
+                  fontSize: 35.0,
+                  fontWeight: FontWeight.w500,
                 ),
               ),
             ),
