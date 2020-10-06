@@ -1,8 +1,9 @@
+import 'package:Ipot/models/plant.dart';
 import 'package:Ipot/screens/arduinoscreen.dart';
+import 'package:Ipot/screens/plantdetail.dart';
+import 'package:Ipot/services/database_connection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:Ipot/models/plantmodel.dart';
-import 'package:Ipot/screens/plantscreen.dart';
 import 'package:Ipot/screens/plantsearch.dart';
 
 class MainScreen extends StatefulWidget {
@@ -14,14 +15,15 @@ class _MainScreenState extends State<MainScreen>
     with SingleTickerProviderStateMixin {
   PageController _pageController;
   int _selectedPage = 0;
-
+  Plant plant;
   @override
   void initState() {
     super.initState();
     _pageController = PageController(initialPage: 0, viewportFraction: 0.8);
   }
 
-  _plantSelector(int index) {
+  _plantSelector(int index, dynamic data) {
+    plant = getPlantFromMap(data);
     return AnimatedBuilder(
       animation: _pageController,
       builder: (BuildContext context, Widget widget) {
@@ -43,7 +45,7 @@ class _MainScreenState extends State<MainScreen>
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (_) => PlantScreen(plant: plants[index]),
+              builder: (_) => PlantDetail(plant: plant),
             ),
           );
         },
@@ -59,14 +61,14 @@ class _MainScreenState extends State<MainScreen>
               child: Stack(
                 children: <Widget>[
                   Center(
-                      child: Image(
-                        height: 250.0,
-                        width: 250.0,
-                        image: AssetImage(
-                          'assets/images/potted-plant.png',
-                        ),
-                        fit: BoxFit.fitHeight,
+                    child: Image(
+                      height: 250.0,
+                      width: 250.0,
+                      image: AssetImage(
+                        'assets/images/potted-plant.png',
                       ),
+                      fit: BoxFit.fitHeight,
+                    ),
                   ),
                   Positioned(
                     left: 30.0,
@@ -83,7 +85,7 @@ class _MainScreenState extends State<MainScreen>
                         ),
                         SizedBox(height: 5.0),
                         Text(
-                          plants[index].name,
+                          data['nomeComum'],
                           style: TextStyle(
                             color: Colors.white,
                             fontSize: 25.0,
@@ -110,7 +112,9 @@ class _MainScreenState extends State<MainScreen>
         backgroundColor: Color(0xFF32A060),
         actions: [
           IconButton(
-            icon: Icon(Icons.add,),
+            icon: Icon(
+              Icons.add,
+            ),
             color: Colors.white,
             iconSize: 30.0,
             tooltip: 'Add new plant',
@@ -176,25 +180,35 @@ class _MainScreenState extends State<MainScreen>
               ),
             ),
             SizedBox(height: 20.0),
-            Container(
-              height: 500.0,
-              width: double.infinity,
-              child: PageView.builder(
-                controller: _pageController,
-                onPageChanged: (int index) {
-                  setState(() {
-                    _selectedPage = index;
-                  });
-                },
-                itemCount: plants.length,
-                itemBuilder: (BuildContext context, int index) {
-                  return _plantSelector(index);
-                },
-              ),
+            FutureBuilder(
+              future: DatabaseConnection().getOnlyActivePlants(),
+              builder: (_, snapshot) {
+                if (!snapshot.hasData) return Container();
+                return Container(
+                  height: 500.0,
+                  width: double.infinity,
+                  child: PageView.builder(
+                    controller: _pageController,
+                    onPageChanged: (int index) {
+                      setState(() {
+                        _selectedPage = index;
+                      });
+                    },
+                    itemCount: snapshot.data.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      return _plantSelector(index, snapshot.data[index]);
+                    },
+                  ),
+                );
+              },
             ),
           ],
         ),
       ),
     );
+  }
+
+  getPlantFromMap(data) {
+    return new Plant().fromJson(data.data(), data.documentID);
   }
 }
