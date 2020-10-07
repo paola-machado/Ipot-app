@@ -36,7 +36,7 @@ class _ArduinoScreenState extends State<ArduinoScreen> {
         padding: EdgeInsets.only(
           left: 30.0,
           right: 30.0,
-          top: 60.0,
+          top: 200.0,
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -47,8 +47,8 @@ class _ArduinoScreenState extends State<ArduinoScreen> {
                   IconButton(
                     icon: Icon(Icons.play_circle_fill_rounded),
                     color: Colors.green,
-                    iconSize: 50.0,
-                    onPressed: _toggleOn,
+                    iconSize: 100.0,
+                    onPressed: () => print('Bomba Ligada!'),
                   ),
                   Text(
                     'Ligar Bomba',
@@ -66,8 +66,8 @@ class _ArduinoScreenState extends State<ArduinoScreen> {
                   IconButton(
                     icon: Icon(Icons.pause_circle_filled_rounded),
                     color: Colors.green,
-                    iconSize: 50.0,
-                    onPressed: _toggleOff,
+                    iconSize: 100.0,
+                    onPressed: () => print('Bomba Desligada!'),
                   ),
                   Text(
                     'Desligar Bomba',

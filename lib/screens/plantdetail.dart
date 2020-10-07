@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 
 class PlantDetail extends StatefulWidget {
   final Plant plant;
+
   const PlantDetail({Key key, this.plant}) : super(key: key);
 
   @override
@@ -125,17 +126,34 @@ class _PlantDetailState extends State<PlantDetail> {
                       ),
                     ),
                     SizedBox(height: 20.0),
-                    RawMaterialButton(
-                      padding: EdgeInsets.all(20.0),
-                      shape: CircleBorder(),
-                      elevation: 2.0,
-                      fillColor: Colors.greenAccent,
-                      child: Icon(
-                        Icons.add,
-                        color: Colors.black,
-                        size: 35.0,
-                      ),
-                      onPressed: () => updatePlanta(),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        RawMaterialButton(
+                          padding: EdgeInsets.all(20.0),
+                          shape: CircleBorder(),
+                          elevation: 2.0,
+                          fillColor: Colors.greenAccent,
+                          child: Icon(
+                            Icons.add,
+                            color: Colors.black,
+                            size: 35.0,
+                          ),
+                          onPressed: () => updatePlanta(),
+                        ),
+                        RawMaterialButton(
+                          padding: EdgeInsets.all(20.0),
+                          shape: CircleBorder(),
+                          elevation: 2.0,
+                          fillColor: Colors.redAccent,
+                          child: Icon(
+                            Icons.delete_forever_outlined,
+                            color: Colors.black,
+                            size: 35.0,
+                          ),
+                          onPressed: () => deletePlanta(),
+                        ),
+                      ],
                     ),
                   ],
                 ),
@@ -183,5 +201,9 @@ class _PlantDetailState extends State<PlantDetail> {
       widget.plant.ativo = true;
     }
     DatabaseConnection().updatePlant(widget.plant);
+  }
+
+  deletePlanta(){
+    DatabaseConnection().deletePlant(widget.plant);
   }
 }
