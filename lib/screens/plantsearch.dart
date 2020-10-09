@@ -117,7 +117,7 @@ class _PlantSearchState extends State<PlantSearch>
               itemBuilder: (context, index) {
                 Plant planta = getPlantFromMap(snapshot, index);
                 return ListTile(
-                  title: Text(snapshot.data[index].data()['nomeComum']),
+                  title: Text(planta.nomeComum),
                   onTap: () => navigateToDetail(planta),
                 );
               },
