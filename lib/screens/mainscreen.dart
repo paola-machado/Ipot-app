@@ -24,8 +24,7 @@ class _MainScreenState extends State<MainScreen>
     _pageController = PageController(initialPage: 0, viewportFraction: 0.8);
   }
 
-  _plantSelector(int index, dynamic data) {
-    plant = getPlantFromMap(data);
+  _plantSelector(int index, Plant plant) {
     return AnimatedBuilder(
       animation: _pageController,
       builder: (BuildContext context, Widget widget) {
@@ -87,7 +86,7 @@ class _MainScreenState extends State<MainScreen>
                         ),
                         SizedBox(height: 5.0),
                         Text(
-                          data['nomeComum'],
+                          plant.nomeComum,
                           style: TextStyle(
                             color: Colors.white,
                             fontSize: 25.0,
@@ -203,7 +202,10 @@ class _MainScreenState extends State<MainScreen>
                     },
                     itemCount: snapshot.data.length,
                     itemBuilder: (BuildContext context, int index) {
-                      return _plantSelector(index, snapshot.data[index]);
+                      Plant plant = new Plant().fromJson(
+                          snapshot.data[index].data(),
+                          snapshot.data[index].documentID);
+                      return _plantSelector(index, plant);
                     },
                   ),
                 );
