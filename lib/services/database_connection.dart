@@ -28,4 +28,9 @@ class DatabaseConnection {
   void addNewPlant(Plant plant) {
     firestore.add(plant.toJson());
   }
+
+  void deletePlant(Plant plant){
+    firestore.doc(plant.uid).delete();
+  }
+
 }
